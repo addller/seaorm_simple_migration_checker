@@ -32,7 +32,7 @@ If you want to change the directory where the entities are located, modify line 
 
     ENTITIES_DIR="./src/api/entities" to ENTITIES_DIR="path_to_entities_folder".
 ```
-"User" is a reserved word in many databases; the application will suggest correcting "User" to "Users" during the check. There's no need to change your entity.
+"user" is a reserved word in many databases; the application will suggest correcting "User" to "Users" during the check. There's no need to change your entity.
 
 
 Note:
