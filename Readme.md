@@ -82,13 +82,18 @@ Info:
     ENTITIES_DIR="./src/api/entities" para ENTITIES_DIR="caminho_da_pasta_entities".
 ```
 "user" é uma palavra reservada em muitos bancos de dados, a aplicação irá sugerir a correção de User para Users durante a chechagem, não é necessário alterar a sua entidade.
+
 Observação:
+
 O Sea-orm Migration Simple Checker é um shellscript simples para verificar se suas entidades tem os campos declarados constantes em algum arquivo de migração baseado no Sea-orm.
+
 Se o campo da entidade foi declarado e aplicado em pelo menos um arquivo de migração ele será considerado como satisfeito.
 O script não gerencia nenhum tipo de histórico de alteração, assim ele leva em consideração a estrutura atual da entidade modelada.
 
 Motivação:
+
 Se você costuma modelar as entidades e depois atualizar os scripts de migração, dá muito trabalho verificar manualmente se algum campo de alguma entidade deixou de ser aplicado em alguma migração.
+
 O CLI do Sea-orm consegue gerar as entidades a partir do arquivo de migração, mas não consege gerar o arquivo de migração a partir das entidades modeladas.
 
 O Sea-orm Migration Simple Checker também não gera o arquivo de migração a partir das entidades modeladas, ele apenas faz uma verificação se no conjunto dos arquivos de migração os campos da entidade foram todos aproveitados e aplicados.
