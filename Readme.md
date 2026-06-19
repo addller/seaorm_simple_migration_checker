@@ -19,10 +19,10 @@ Requirements:
 2- The 0_migration_checker.sh file must be at the root level and the directory tree must be structured as in the example above.
 
 3- awk must be installed; it is a scripting language for text manipulation.
-
+```
 4- Give execution permission to the file:
     chmod 700 0_migration_checker.sh
-
+```
 
 Info:
 If you want to change the directory where the entities are located, modify line 9 of the script:
@@ -58,13 +58,14 @@ root
 Requerimentos:
 1- Sistema operacional linux e talvez macos;
 
-2- arquivo 0_migration_checker.sh deve estar a nível de raiz e a árvore de diretórios deve estar estruturada como no exemplo acima.
+2- Arquivo 0_migration_checker.sh deve estar a nível de raiz e a árvore de diretórios deve estar estruturada como no exemplo acima;
 
-3- o awk deve estar intalado, ele é uma linguagem de script para a manipulação de textos.
+3- O awk deve estar intalado, ele é uma linguagem de script para a manipulação de textos; e
 
-4- dar permissão de execução ao arquivo:
+```
+4- Dar permissão de execução ao arquivo:
     chmod 700 0_migration_checker.sh
-
+```
 Info:
     Se você quiser alterar o diretório onde se encontram as entidades, modifique a linha 9 do script:
     ENTITIES_DIR="./src/api/entities" para ENTITIES_DIR="caminho_da_pasta_entities".
