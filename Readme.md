@@ -12,7 +12,11 @@ root
 └── Cargo.toml
 ```
 
+Aviso:
+É importante o arquivo 0_migration_checker.sh para saber o que está sendo executado por ele.
+
 Requirements:
+
 
 1- Linux operating system and possibly macOS;
 
@@ -55,7 +59,12 @@ root
 └── 0_migration_checker.sh
 └── Cargo.toml
 ```
+
+Aviso:
+É importante o arquivo 0_migration_checker.sh para saber o que está sendo executado por ele.
+
 Requerimentos:
+
 1- Sistema operacional linux e talvez macos;
 
 2- Arquivo 0_migration_checker.sh deve estar a nível de raiz e a árvore de diretórios deve estar estruturada como no exemplo acima;
@@ -65,11 +74,11 @@ Requerimentos:
 ```
 4- Dar permissão de execução ao arquivo:
     chmod 700 0_migration_checker.sh
-```
+
 Info:
     Se você quiser alterar o diretório onde se encontram as entidades, modifique a linha 9 do script:
     ENTITIES_DIR="./src/api/entities" para ENTITIES_DIR="caminho_da_pasta_entities".
-
+```
 Observação:
 O Sea-orm Migration Simple Checker é um shellscript simples para verificar se suas entidades tem os campos declarados constantes em algum arquivo de migração baseado no Sea-orm.
 Se o campo da entidade foi declarado e aplicado em pelo menos um arquivo de migração ele será considerado como satisfeito.
