@@ -12,8 +12,8 @@ root
 └── Cargo.toml
 ```
 
-Aviso:
-É importante o arquivo 0_migration_checker.sh para saber o que está sendo executado por ele.
+Warning:
+The 0_migration_checker.sh file is important to know what it is executing.
 
 Requirements:
 
