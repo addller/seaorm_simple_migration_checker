@@ -1,6 +1,7 @@
 #EN_US
 
 Structure:
+``
 root
 └── migration
     └── src
@@ -9,6 +10,7 @@ root
         └── entities
 └── 0_migration_checker.sh
 └── Cargo.toml
+``
 
 Requirements:
 
@@ -39,6 +41,7 @@ The Sea-orm Migration Simple Checker also does not generate the migration file f
 #PT_BR
 
 Estrutura das pastas:
+``
 root
 └── migration
     └── src
@@ -47,7 +50,7 @@ root
         └── entities
 └── 0_migration_checker.sh
 └── Cargo.toml
-
+``
 Requerimentos:
 1- Sistema operacional linux e talvez macos;
 
