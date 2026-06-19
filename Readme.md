@@ -26,11 +26,12 @@ Requirements:
 ```
 4- Give execution permission to the file:
     chmod 700 0_migration_checker.sh
-```
 
 Info:
 If you want to change the directory where the entities are located, modify line 9 of the script:
+
     ENTITIES_DIR="./src/api/entities" to ENTITIES_DIR="path_to_entities_folder".
+```
 "User" is a reserved word in many databases; the application will suggest correcting "User" to "Users" during the check. There's no need to change your entity.
 
 
