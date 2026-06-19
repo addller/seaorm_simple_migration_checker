@@ -1,4 +1,5 @@
 #EN_US
+
 Structure:
 root
 └── migration
@@ -36,6 +37,7 @@ The Sea-orm Migration Simple Checker also does not generate the migration file f
 
 
 #PT_BR
+
 Estrutura das pastas:
 root
 └── migration
