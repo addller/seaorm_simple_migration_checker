@@ -6,13 +6,13 @@ if ! which awk > /dev/null 2>&1; then
 fi
 
 #Base directory for entities
-ENTITYIES_DIR="./src/api/entities"
+ENTITIES_DIR="./src/api/entities"
 
 #Rust sea orm migration checker started.
 echo "Starting rust sea orm Simple Migration Checker..."
 
-if [ ! -d "$ENTITYIES_DIR" ]; then
-  echo "Directory $ENTITYIES_DIR does not exist."
+if [ ! -d "$ENTITIES_DIR" ]; then
+  echo "Directory $ENTITIES_DIR does not exist."
   exit 1
 fi
 
@@ -185,7 +185,7 @@ verify_application_of_founded_fields(){
     fi
 }
 
-ENTITIES_FILES=$(ls -1 "$ENTITYIES_DIR" | grep -E '.rs$' | sed "s|^|$ENTITYIES_DIR/|")
+ENTITIES_FILES=$(ls -1 "$ENTITIES_DIR" | grep -E '.rs$' | sed "s|^|$ENTITIES_DIR/|")
 
 for file in $ENTITIES_FILES; do
     check_struct_attributes "$file"
