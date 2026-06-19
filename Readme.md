@@ -13,7 +13,7 @@ root
 ```
 
 Warning:
-The 0_migration_checker.sh file is important to know what it is executing.
+Read 0_migration_checker.sh scritp to know what it is executing.
 
 Requirements:
 
@@ -61,7 +61,7 @@ root
 ```
 
 Aviso:
-É importante o arquivo 0_migration_checker.sh para saber o que está sendo executado por ele.
+É importante ler o script 0_migration_checker.sh para saber o que está sendo executado por ele.
 
 Requerimentos:
 
