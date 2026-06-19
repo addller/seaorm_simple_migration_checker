@@ -79,8 +79,10 @@ Requerimentos:
 
 Info:
     Se você quiser alterar o diretório onde se encontram as entidades, modifique a linha 9 do script:
+
     ENTITIES_DIR="./src/api/entities" para ENTITIES_DIR="caminho_da_pasta_entities".
 ```
+
 "user" é uma palavra reservada em muitos bancos de dados, a aplicação irá sugerir a correção de User para Users durante a chechagem, não é necessário alterar a sua entidade.
 
 Observação:
