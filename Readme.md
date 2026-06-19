@@ -31,6 +31,8 @@ Requirements:
 Info:
 If you want to change the directory where the entities are located, modify line 9 of the script:
     ENTITIES_DIR="./src/api/entities" to ENTITIES_DIR="path_to_entities_folder".
+"User" is a reserved word in many databases; the application will suggest correcting "User" to "Users" during the check. There's no need to change your entity.
+
 
 Note:
 The Sea-orm Migration Simple Checker is a simple shell script to check if your entities have the declared fields present in any Sea-orm-based migration file.
@@ -79,6 +81,7 @@ Info:
     Se você quiser alterar o diretório onde se encontram as entidades, modifique a linha 9 do script:
     ENTITIES_DIR="./src/api/entities" para ENTITIES_DIR="caminho_da_pasta_entities".
 ```
+"user" é uma palavra reservada em muitos bancos de dados, a aplicação irá sugerir a correção de User para Users durante a chechagem, não é necessário alterar a sua entidade.
 Observação:
 O Sea-orm Migration Simple Checker é um shellscript simples para verificar se suas entidades tem os campos declarados constantes em algum arquivo de migração baseado no Sea-orm.
 Se o campo da entidade foi declarado e aplicado em pelo menos um arquivo de migração ele será considerado como satisfeito.

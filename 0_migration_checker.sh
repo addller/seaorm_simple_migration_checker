@@ -22,11 +22,13 @@ if [ ! -d "$ENTITIES_DIR" ]; then
     else
         for dir in $ENTITIES_DIR; do
             read -p "Found entities directory at: $dir, continue: y/n? " RESPONSE
-            if [[ "$RESPONSE" == "y" ]] || [[ "$RESPONSE" == "Y" ]]; then
-                ENTITIES_DIR_FOUND=true
-                ENTITIES_DIR="$dir"
-                break
-            fi
+            case "$RESPONSE" in
+                [yY]) 
+                    ENTITIES_DIR_FOUND=true
+                    ENTITIES_DIR="$dir"
+                    break
+                    ;;
+            esac
         done
     fi
 else
@@ -46,6 +48,7 @@ check_struct_attributes() {
     local END_IDENTIFICATION_FIELDS=false
     local STRUCT_NAME=""
     local FIELDS=()
+    
     # Use grep to find lines that match the pattern of struct definitions
     while read -r line; do
         #identify Entity type;
@@ -56,6 +59,7 @@ check_struct_attributes() {
                 exit 1
             fi
             ENTITY_TYPE=$(echo "$line" | awk '{print $3}')
+            printf "Identified entity type: %s\n" "$ENTITY_TYPE"
             continue
         fi
 
@@ -113,28 +117,37 @@ check_struct_attributes() {
         exit 1
     fi
 
+
     compare_entity_atributes_with_migrations "$ENTITY_TYPE" "$FILE_ENTITY_PATH" FIELDS[@]
 }
 
 compare_entity_atributes_with_migrations(){
+    
     MIGRATION_FILE_PATHS=$(find ./migration/ -name "m*_*_*\.rs")
+    local ENTITY_NAME="$1"
     local ENTITY_FIELDS=("${!3}")
     local ENTITY_FIELDS_APPLYED=("${!3}")
+
+    if [[ "$ENTITY_NAME" = "User" ]]; then
+        echo '"user" is a reserved word in most SQL databases.'
+        read -p "Change User to Users? y/n: " RESPONSE
+        case "$RESPONSE" in
+            [yY]) 
+                ENTITY_NAME="Users"
+                echo "Checking User as Users: $ENTITY_NAME"
+                ;;
+        esac
+    fi
 
     for file in $MIGRATION_FILE_PATHS; do
         local FOUNDED_ENTITY_FIELDS=()
 
-        local ENTITY_NAME="$1"
         local ENTITY_FOUNDS_IN_MIGRATION=false
         local START_IDENTIFICATION_FIELDS=false
 
         while read -r line; do
             if grep -qE "enum $ENTITY_NAME\s*{" <<< "$line" ; then
                 ENTITY_FOUNDS_IN_MIGRATION=true
-                
-                if grep -qE "}" <<< "$line"; then
-                    break
-                fi
                 
                 continue
             fi
@@ -149,6 +162,7 @@ compare_entity_atributes_with_migrations(){
 
                 #remove finded field from ENTITY_FIELDS array
                 for i in "${!ENTITY_FIELDS[@]}"; do
+
                     UPPERCASE_ENTITY_FIELD=$(apply_upper_migration_entity_uppercase "${ENTITY_FIELDS[i]}")
 
                     if [[ "${UPPERCASE_ENTITY_FIELD}" == "$MIGRATION_FIELD" ]]; then
@@ -159,6 +173,7 @@ compare_entity_atributes_with_migrations(){
             fi
 
         done < "$file"
+
         verify_application_of_founded_fields "$ENTITY_NAME" "$file" FOUNDED_ENTITY_FIELDS[@]
     done
 
@@ -170,7 +185,6 @@ compare_entity_atributes_with_migrations(){
         echo "Entity file path: $2"
         exit 1
     fi
-
 }
 
 apply_upper_migration_entity_uppercase(){
