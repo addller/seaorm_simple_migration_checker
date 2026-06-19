@@ -7,13 +7,35 @@ fi
 
 #Base directory for entities
 ENTITIES_DIR="./src/api/entities"
+ENTITIES_DIR_FOUND=false
 
 #Rust sea orm migration checker started.
 echo "Starting rust sea orm Simple Migration Checker..."
 
 if [ ! -d "$ENTITIES_DIR" ]; then
   echo "Directory $ENTITIES_DIR does not exist."
-  exit 1
+  echo -e "Searching for entities directory...\n"
+  ENTITIES_DIR=$(find . -name "entities" -type d)
+    if [ -z "$ENTITIES_DIR" ]; then
+        echo "Could not find the entities directory."
+        exit 1
+    else
+        for dir in $ENTITIES_DIR; do
+            read -p "Found entities directory at: $dir, continue: y/n? " RESPONSE
+            if [[ "$RESPONSE" == "y" ]] || [[ "$RESPONSE" == "Y" ]]; then
+                ENTITIES_DIR_FOUND=true
+                ENTITIES_DIR="$dir"
+                break
+            fi
+        done
+    fi
+else
+    ENTITIES_DIR_FOUND=true
+fi
+
+if [ "$ENTITIES_DIR_FOUND" = false ]; then
+    echo "No entities directory selected, exiting."
+    exit 1
 fi
 
 #função para verificar os atributos declarados em uma struct rust
